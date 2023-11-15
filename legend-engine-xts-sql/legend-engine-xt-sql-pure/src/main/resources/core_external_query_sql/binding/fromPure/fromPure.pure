@@ -1989,7 +1989,9 @@ function meta::external::query::sql::transformation::queryToPure::functionProces
       processor('concat', String, {args, fc, ctx |
         sfe(plus_String_MANY__String_1_, iv($args))
       }),
+      processor('jaroWinklerSimilarity', jaroWinklerSimilarity_String_1__String_1__Float_1_),
       processor('length', length_String_1__Integer_1_),
+      processor('levenshteinDistance', levenshteinDistance_String_1__String_1__Integer_1_),
       processor('lower', toLower_String_1__String_1_),
       processor('lpad', String, {args, fc, ctx | processPad($args, true)}),
       processor('ltrim', String, {args, fc, ctx | processTrim(ltrim_String_1__String_1_, $args)}),
@@ -2030,6 +2032,7 @@ function meta::external::query::sql::transformation::queryToPure::functionProces
       processor('substr', false, {args, fc, ctx | processSubstring($args)}),
       processor('substring', false, {args, fc, ctx | processSubstring($args)}),
       processor('upper', toUpper_String_1__String_1_),
+
       //DATE
       processor('date', Date, {args, fc, ctx |
         possiblyProcessParseDate($args->at(0))
